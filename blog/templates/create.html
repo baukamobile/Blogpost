@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+<form method="post" action="">
+    {% for a in form %}
+    <br>
+    {{ a }}
+    <br>
+<!--    {{ a.as_p }}-->
+    {% endfor %}
+    {% csrf_token %}
+
+
+    <button>Save</button>
+</form>

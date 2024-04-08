@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hello from main</h1>
+
+<form method="post" action="{% url 'createpost' %}">
+    <p>title</p>
+    {% for a in form %}
+    <br>
+    {{ a }}
+    <br>
+    {% endfor %}
+    {% csrf_token %}
+
+<button>Add Post</button>
+<!--    <button>Save</button>-->
+</form>
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <button>Add Post</button>-->
+<!--</form>-->
+
+
+{% for i in blog %}
+<br><br><br>
+    <h1>{{i.title}}</h1>
+    <p>{{i.content}}</p>
+    <strong>{{i.publication_date}}</strong>
+    <b>{{i.author}}</b>
+<form method="post" action="{% url 'updatepost' i.id %}">
+    {% csrf_token %}
+<button>Edit</button>
+</form>
+
+<form method="post" action="{% url 'deletepost' i.id %}">
+    {% csrf_token %}
+    <button>Delete</button>
+</form>
+
+
+{% endfor %}
+
+{% endblock %}

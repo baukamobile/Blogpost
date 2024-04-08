@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" action="{% url 'createpost' %}">
+    <p>title</p>
+    {% for a in form %}
+    <br>
+    {{ a }}
+    <br>
+    {% endfor %}
+    {% csrf_token %}
+
+<button>Update Post</button>
+<!--    <button>Save</button>-->
+</form>
+{% endblock с%}
